@@ -14,15 +14,16 @@ class Main {
         String eString = "";
 
 
-        for (int i = 0; i < uString.length(); i++){
-            if ((i != 0) && (uString.charAt(i) == uString.charAt(i-1))){
+        for (int i = 1; i < uString.length(); i++){
+            if ((uString.charAt(i) == uString.charAt(i-1))){
                 count++;
             }else{
-                eString = eString + uString.charAt(i) + String.valueOf(count);
+                eString = eString + uString.charAt(i-1) + count;
                 count = 1;
             }
-            System.out.println(String.valueOf(uString.charAt(i)) + String.valueOf(i) + String.valueOf(count));
-        }System.out.println("Unencoded string's length: " + uString.length() + "\nEncoded string:" + eString + ", encoded string's length: " + eString.length());
+        }eString = eString + uString.charAt(uString.length()-1) + count;
+        System.out.println("Unencoded string's length: " + uString.length() + "\nEncoded string:" + eString + ", encoded string's length: " + eString.length());
+        if (eString.length() >= uString.length()){System.out.print("Running this string through RLE is inefficient/pointless!");}
     }
 }
 // for each character, check if it's the same as the last
